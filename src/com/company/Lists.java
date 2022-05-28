@@ -1,10 +1,12 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Lists {
+public class Lists implements Serializable {
+
     String idList;
     String nameList;
     List<Task> tasks = new ArrayList<>();
@@ -62,7 +64,6 @@ public class Lists {
         System.out.println("Please enter task:");
         String task = sc.nextLine();
 
-
         Task t = new Task();
         t.setId(idList);
         t.setTask(task);
@@ -75,7 +76,7 @@ public class Lists {
         for (Task t : tasks) {
             System.out.println("ID " + t.getId() + " Task " + t.getTask());
         }
-        System.out.println("Please enter task name to delete");
+        System.out.println("Please write task to delete");
         String taskToDel = sc.nextLine();
         for (Task t : tasks) {
             if (t.getTask().equals(taskToDel)) {
@@ -83,7 +84,7 @@ public class Lists {
                 System.out.println("Task deleted! ");
                 break;
             } else {
-                System.out.println("Invalid Task! Еry again! ");
+                System.out.println("Invalid Task! Try again! ");
             }
         }
     }
@@ -103,7 +104,7 @@ public class Lists {
     }
 
     public void markCompletedTask() {
-        System.out.println("Please enter task name to mark it as completed");
+        System.out.println("Please write task to mark it as completed");
         String taskCompleted = sc.nextLine();
         for (Task o : tasks) {
             if (o.getTask().equals(taskCompleted)) {
@@ -114,13 +115,14 @@ public class Lists {
             }
         }
     }
+
     @Override
     public String toString() {
+
         return "Lists{" +
                 "idList='" + idList + '\'' +
                 ", nameList='" + nameList + '\'' +
                 ", tasks=" + tasks +
-                ", sc=" + sc +
                 '}';
     }
 }
